@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <search-bar />
-    <base-main />
+    <BaseHeader />
+    <BaseMain />
   </div>
 </template>
 
 <script>
-import SearchBar from "./components/SearchBar.vue";
-import BaseMain from './components/BaseMain.vue';
+import BaseHeader from './components/macro/BaseHeader.vue';
+import BaseMain from './components/macro/BaseMain.vue';
 
 export default {
   name: "App",
   components: {
-    SearchBar,
+    BaseHeader,
     BaseMain,
   },
 };
