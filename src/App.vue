@@ -7,7 +7,7 @@
 
 <script>
 import BaseHeader from './components/macro/BaseHeader.vue';
-import BaseMain from './components/macro/BaseMain.vue';
+import BaseMain from './components/macro/BaseMain.vue'
 
 export default {
   name: "App",
