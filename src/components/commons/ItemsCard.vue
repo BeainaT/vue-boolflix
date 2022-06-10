@@ -2,7 +2,9 @@
   <ul class="item p-0 m-0 list-unstyled">
     <li>
       <h4>{{film.title}}</h4>
+      <h4>{{film.name}}</h4>
       <h4>{{film.original_title}}</h4>
+      <h4>{{film.original_name}}</h4>
       <img :src="getFlags(film.original_language)" :alt="film.original_language">
       <h4>{{film.vote_average}}</h4>
     </li>

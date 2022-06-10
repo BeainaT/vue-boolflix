@@ -2,6 +2,7 @@ import Vue from 'vue';
 
 export default Vue.observable({
     films: [],
+    series: [],
     flags: {
         fr: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/320px-Flag_of_France.svg.png",
         sv: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Sweden_%283-2%29.svg/320px-Flag_of_Sweden_%283-2%29.svg.png",

@@ -1,6 +1,6 @@
 <template>
   <div class="search_box">
-    <form @submit.prevent="searching">
+    <form @submit.prevent="searching();searchingSeries()">
       <input type="text" v-model="searchItems" />
       <button type="submit" class="btn">search</button>
     </form>
@@ -37,6 +37,24 @@ export default {
           console.log(error);
         });
     },
+    searchingSeries() {
+      axios
+        .get("https://api.themoviedb.org/3/search/tv", {
+          params: {
+            api_key: "b5d50dcfcc9b131150f732b632d34789",
+            query: this.searchItems,
+            language: "it-IT",
+          },
+        })
+        .then((response) => {
+          console.log(response)
+          this.sharedData.series = response.data.results;
+          this.searchItems = '';
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   },
 };
 </script>

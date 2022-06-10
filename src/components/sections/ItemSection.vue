@@ -5,6 +5,9 @@
                 <div class="col-12 col-md-3" v-for="film in sharedData.films" :key="film.id">
                     <ItemsCard :film="film"/>
                 </div>
+                <div class="col-12 col-md-3" v-for="film in sharedData.series" :key="film.id">
+                    <ItemsCard :film="film"/>
+                </div>
             </div>
         </div>
     </section>
