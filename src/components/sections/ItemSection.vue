@@ -1,11 +1,11 @@
 <template>
     <section>
         <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-3" v-for="film in sharedData.films" :key="film.id">
+            <div class="row gap-3 justify-content-center">
+                <div class="col-12 col-md-3 col-lg-2" v-for="film in sharedData.films" :key="film.id">
                     <ItemsCard :film="film"/>
                 </div>
-                <div class="col-12 col-md-3" v-for="film in sharedData.series" :key="film.id">
+                <div class="col-12 col-md-3 col-lg-2" v-for="film in sharedData.series" :key="film.id">
                     <ItemsCard :film="film"/>
                 </div>
             </div>
@@ -25,7 +25,7 @@ export default {
     },
     data() {
         return {
-            sharedData,
+            sharedData,            
         }
     },
 }

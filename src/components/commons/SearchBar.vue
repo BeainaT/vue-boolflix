@@ -47,7 +47,6 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response)
           this.sharedData.series = response.data.results;
           this.searchItems = '';
         })
