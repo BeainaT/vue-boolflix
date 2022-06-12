@@ -1,18 +1,20 @@
 <template>
   <ul class="item p-0 m-0 list-unstyled">
-    <li class="img_box">
+    <li class="img_box" @mouseenter="showDetails()" @mouseleave="showDetails()">
         <img class="poster_item" :src="getPoster(film.poster_path)" alt="film poster">
-        <div class="descriptions_item py-4 px-2 py-3 overflow-auto">
-            <p><strong>Titolo:</strong>{{film.title || film.name}}</p>
-            <p><strong>Titolo originale:</strong>{{film.original_title || film.original_name}}</p>
-            <div class="vote">
-                <strong>Voto:</strong>
-                <i class="fa-solid fa-star" v-for="(star, i) in getStars(film.vote_average)" :key="'star' + i"></i>
-                <i class="fa-regular fa-star" v-for="(emptyStar, i) in 5 - getStars(film.vote_average)" :key="'emptyStar' + i"></i>
+        <transition>
+            <div class="descriptions_item py-4 px-2 py-3 overflow-auto" v-if="(visible)">
+                <p><strong>Titolo:</strong>{{film.title || film.name}}</p>
+                <p><strong>Titolo originale:</strong>{{film.original_title || film.original_name}}</p>
+                <div class="vote">
+                    <strong>Voto:</strong>
+                    <i class="fa-solid fa-star" v-for="(star, i) in getStars(film.vote_average)" :key="'star' + i"></i>
+                    <i class="fa-regular fa-star" v-for="(emptyStar, i) in 5 - getStars(film.vote_average)" :key="'emptyStar' + i"></i>
+                </div>
+                <lang-flag :iso="film.original_language" :alt="film.original_language" class="d-block"/>
+                <p><strong>Trama:</strong>{{getOverview(film.overview)}}</p>
             </div>
-            <lang-flag :iso="film.original_language" :alt="film.original_language" class="d-block"/>
-            <p><strong>Trama:</strong>{{getOverview(film.overview)}}</p>
-        </div>
+        </transition>
     </li>
   </ul>
 </template>
@@ -32,6 +34,7 @@ export default {
     data() {
         return {
           sharedData,
+          visible: false,
         }
     },
     methods: {
@@ -43,6 +46,9 @@ export default {
         },
         getOverview(elm) {
             return elm === "" ? `Sorry, no plot available for this item` : elm;
+        },
+        showDetails() {
+            return this.visible = !this.visible;
         }
     },
 }
@@ -54,6 +60,14 @@ export default {
             .poster_item {
                 width: 100%;
             }
+            .v-enter-active,
+            .v-leave-active {
+                transition: opacity 0.8s linear;
+            }
+            .v-enter,
+            .v-leave-to {
+                opacity: 0 ;
+            }
             .descriptions_item {
                 height: 100%;
                 width: 100%;
@@ -62,11 +76,6 @@ export default {
                 left: 0;
                 color: #fff;
                 background-color: rgba($color: #000000, $alpha: 0.9);
-                opacity: 0;
-                &:hover {
-                    opacity: 1;
-                    transition: 0.5s linear;
-                }
                 .flag-icon-undefined {
                     width: 1.25rem;
                     height: auto;
