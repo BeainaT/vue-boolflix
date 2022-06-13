@@ -2,7 +2,7 @@
   <div class="search_box">
     <form @submit.prevent="searching();searchingSeries()">
       <input type="text" v-model="searchItems" />
-      <button type="submit" class="btn">search</button>
+      <button type="submit" class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
   </div>
 </template>
@@ -63,6 +63,12 @@ export default {
     display: flex;
     input {
       width: 100%;
+      &:focus {
+        outline: none;
+      }
+    }
+    button {
+      color: var(--text_color);
     }
 }
 </style>

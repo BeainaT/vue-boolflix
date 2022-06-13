@@ -1,20 +1,23 @@
 <template>
-  <header>
+  <header class="py-4">
     <div class="container">
-      <div class="row">
-        <search-bar class="col-4"/>
+      <div class="row justify-content-between">
+        <LogoApp />
+        <SearchBar class="col-4"/>
       </div>
     </div>
   </header>
 </template>
 
 <script>
-import SearchBar from '../commons/SearchBar.vue'
+import SearchBar from '../commons/SearchBar.vue';
+import LogoApp from '../commons/LogoApp.vue';
 
 export default {
   name: 'BaseHeader',
   components: { 
-    SearchBar 
+    SearchBar,
+    LogoApp
   },
 }
 

@@ -1,17 +1,17 @@
 <template>
-    <section>
-        <div class="container">
+    <section  class="container">
+        <div>
             <div class="row gap-3 justify-content-center">
                 <div class="col-12 col-md-3 col-lg-2" v-for="film in sharedData.films" :key="film.id">
                     <ItemsCard :film="film"/>
                 </div>
-                <div class="col-12 col-md-3 col-lg-2" v-for="film in sharedData.series" :key="film.id">
-                    <ItemsCard :film="film"/>
+                <div class="col-12 col-md-3 col-lg-2" v-for="serie in sharedData.series" :key="serie.id">
+                    <ItemsCard :film="serie"/>
                 </div>
             </div>
         </div>
     </section>
- 
+
 </template>
 
 <script>

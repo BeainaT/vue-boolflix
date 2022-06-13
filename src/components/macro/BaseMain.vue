@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="pb-4">
       <ItemSection/>
   </main>
 </template>

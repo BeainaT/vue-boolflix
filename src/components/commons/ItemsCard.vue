@@ -3,7 +3,7 @@
     <li class="img_box" @mouseenter="showDetails()" @mouseleave="showDetails()">
         <img class="poster_item" :src="getPoster(film.poster_path)" alt="film poster">
         <transition>
-            <div class="descriptions_item py-4 px-2 py-3 overflow-auto" v-if="(visible)">
+            <div class="descriptions_item py-4 px-2 py-3" v-if="(visible)">
                 <p><strong>Titolo:</strong>{{film.title || film.name}}</p>
                 <p><strong>Titolo originale:</strong>{{film.original_title || film.original_name}}</p>
                 <div class="vote">
@@ -75,7 +75,20 @@ export default {
                 top: 0;
                 left: 0;
                 color: #fff;
-                background-color: rgba($color: #000000, $alpha: 0.9);
+                background-color: rgba($color: #000, $alpha: 0.9);
+                overflow-y: auto;
+                &::-webkit-scrollbar {
+                    width: .625rem;
+                }
+                &::-webkit-scrollbar-track {
+                    background-color: var(--secondary_color);
+                    border-radius: 6.25rem; 
+                }
+                &::-webkit-scrollbar-thumb {
+                    border-radius: 6.25rem;
+                    border: .0625rem solid var(--text_color);
+                    background-color: var(--primary_color);
+            }       
                 .flag-icon-undefined {
                     width: 1.25rem;
                     height: auto;
@@ -86,7 +99,6 @@ export default {
                     margin: 0;
                 }
             }
-
     }
 
 </style>
