@@ -2,6 +2,9 @@
     <section  class="container">
         <div>
             <div class="row gap-3 justify-content-center">
+                <div class="col-12 col-md-3 col-lg-2" v-for="popular in sharedData.populars" :key="popular">
+                    <ItemsCard :film="popular"/>
+                </div>
                 <div class="col-12 col-md-3 col-lg-2" v-for="film in sharedData.films" :key="film.id">
                     <ItemsCard :film="film"/>
                 </div>
