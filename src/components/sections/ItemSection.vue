@@ -2,9 +2,15 @@
     <section  class="container">
         <div>
             <div class="row gap-3 justify-content-center">
-                <div class="col-12 col-md-3 col-lg-2" v-for="popular in sharedData.populars" :key="popular">
-                    <ItemsCard :film="popular"/>
-                </div>
+                    <div class="col-12 col-md-3 col-lg-2" v-for="popular in filteredGenres" :key="popular.id">
+                        <ItemsCard :film="popular" />
+                    </div>                    
+                <template v-if="filteredGenres.length < 1 && sharedData.films.length < 1">
+                    <div class="py-3 text-center">
+                        <h3>Siamo spiacenti</h3>
+                        <h5>Non ci sono al momento titoli per {{notFound() ? "questo genere" : "questa ricerca"}}</h5>
+                    </div>
+                </template>
                 <div class="col-12 col-md-3 col-lg-2" v-for="film in sharedData.films" :key="film.id">
                     <ItemsCard :film="film"/>
                 </div>
@@ -26,9 +32,33 @@ export default {
     components: {
         ItemsCard,
     },
+    props: {
+        genreId: Number
+    },
     data() {
         return {
-            sharedData,            
+            sharedData,
+        }
+    },
+    methods: {
+        notFound() {
+            if(this.sharedData.populars.length !== 0) {
+                return true
+            } else {
+                return false
+            }
+        },
+    },
+    computed: {
+        filteredGenres() {
+            if(this.genreId == null) {
+                return this.sharedData.populars;
+            } else {
+                let filter = this.sharedData.populars.filter(elm => {
+                    return elm.genre_ids.includes(this.genreId);
+                });
+                return filter;          
+            }
         }
     },
 }

@@ -81,9 +81,11 @@ form {
   display: flex;
 
   &:hover input {
-    width: 100%;
+    width: 50%;
     padding: 0.125rem;
     outline: none;
+    border-radius: .3125rem;
+    background-color: rgb(224, 221, 221);
   }
 
   input {

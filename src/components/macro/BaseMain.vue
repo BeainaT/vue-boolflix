@@ -1,11 +1,9 @@
 <template>
   <main class="pb-4">
-
       <ul class="list-unstyled d-flex flex-wrap justify-content-center">
-        <li class="px-2" v-for="genre in sharedData.genres" :key="genre.id"><a href="#">{{genre.name}}</a></li>
+        <li class="px-2" v-for="genre in sharedData.genres" :key="genre.id"><a @click.prevent="getGenre(genre.id)" href="#">{{genre.name}}</a></li>
       </ul>
-
-      <ItemSection/>
+      <ItemSection :genreId="genreId"/>
   </main>
 </template>
 
@@ -21,7 +19,8 @@ export default {
     },
     data() {
         return {
-            sharedData
+            sharedData,
+            genreId: null,
         }
     },
     created() {
@@ -38,9 +37,20 @@ export default {
           console.log(error);
         });
     },
+    methods: {
+      getGenre(elm) {
+        this.genreId = elm;
+      },
+    }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+  a {
+    color: var(--text_primary);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
 
 </style>
